@@ -57,10 +57,8 @@ int main()
         infile.close();
     }
 
-
-
-int main()
-{
-    std::cout << "Hello World!\n";
+        // jika tidak dtemukan file maka akan menampilkan ini
+    else cout << "Unable to open file";
+    return 0;
 }
 
