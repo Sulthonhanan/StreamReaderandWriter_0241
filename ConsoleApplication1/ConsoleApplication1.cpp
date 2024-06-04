@@ -1,64 +1,53 @@
-// ConsoleApplication1.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <fstream>
 #include <iostream>
 #include <string>
+
 using namespace std;
 
 int main()
 {
     string baris;
-    string NamaFile;
 
-    cout << "Masukan Nama File : ";
-    cin >> NamaFile;
-
-    // membuka file dalam mode menulis
+    // Mmebuka file dalam mode menulis.
     ofstream outfile;
-    // menunjuk ke sebuah nama file
-    outfile.open(NamaFile + ".txt", ios::out);
+    // Menunjuk ke sebuah nama file
+    outfile.open("contohfile.txt");
 
-    cout << ">= Menulis file, \'q\' untuk keluar" << endl; 
+    cout << ">= Menulis file, \'q\' untuk keluar" << endl;
 
-    // unlimited loop untuk menulis
+    //Unlimited loop untuk menulis
     while (true)
     {
-        cout << "- ";
-        // menda[atkan setiap karakter dalam satu baris
+        cout << "-";
+        //Mendapatkan setiap karakter dalam satu baris
         getline(cin, baris);
-        // loop akan berhenti jika anda memasukan karakter q
+        //Loop akan berhenti jika anda memasukkan karakter q
         if (baris == "q") break;
-        // menulis dan memaskan nilai dari 'baris' ke dalam file
+        //Menulis dan memasukkan nilai dari 'baris' ke dalam file
         outfile << baris << endl;
     }
-
-
-    // selesai dalam menulis sekarang tutup filenya
+    //selesai dalam menulis sekarang tutup filenya
     outfile.close();
 
-    // membuka file dalalm moode membaca
+    //Membuka file dalam mode membaca
     ifstream infile;
+    //Menunjuk ke sebuah file
+    infile.open("contohfile.txt");
 
-    // menunjuk ke sebuah file 
-    infile.open(NamaFile + ".txt", ios::in);
-
-    cout << endl << ">=Membuka dan membaca file " << endl;
-    // jika file ada maka
+    cout << endl << ">= Mmebuka dan membaca file" << endl;
+    //Jika file ada maka
     if (infile.is_open())
     {
-        // melakukan perulangan setiap baris
+        //Melakukan perulangan setiap baris
         while (getline(infile, baris))
         {
-            // dan tampilkan di sini
-            cout << baris << '\n';
+            //Dan tampilkan disini
+            cout << baris << '/n';
         }
-        // tutup file tersebut setelah selesai
+        //Tutup file tersebut setelah selesai
         infile.close();
     }
-
-        // jika tidak dtemukan file maka akan menampilkan ini
+    //Jika tidak ditemukan file maka akan menampilkan ini
     else cout << "Unable to open file";
-    return 0;
+    return 0;
 }
-
